@@ -5,7 +5,7 @@ try:
         host="localhost",
         user="root",
         password="61bfaculdade",
-        database="financeiro_db", # O banco de dados foi criado mas não esta preenchido.
+        database="financeiro_db",
         port=3306
     )
     

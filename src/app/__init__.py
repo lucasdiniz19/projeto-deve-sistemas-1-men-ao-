@@ -18,7 +18,7 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
-    # Importe e registre seus Blueprints/Rotas aqui
+    # Importar e registrar os Blueprints/Rotas aqui
     # from .routes import main
     # app.register_blueprint(main)
 
