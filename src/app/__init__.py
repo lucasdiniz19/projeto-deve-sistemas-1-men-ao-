@@ -1,25 +1,21 @@
 import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from dotenv import load_dotenv
+from database import db # ou de onde vier seu db
+from flask_migrate import Migrate
+from .extensions import db, migrates
 
-load_dotenv()
-
-db = SQLAlchemy()
-migrate = Migrate()
+load_dotenv() # Isso carrega o arquivo .env
 
 def create_app():
     app = Flask(__name__)
-
+    
+    # Pega a URL do banco do arquivo .env
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
-    migrate.init_app(app, db)
+    Migrate(app, db) # Isso ativa o comando 'flask db'
 
-    # Importar e registrar os Blueprints/Rotas aqui
-    # from .routes import main
-    # app.register_blueprint(main)
-
+    # Registre suas rotas aqui embaixo...
     return app
