@@ -1,9 +1,9 @@
 import os
 from flask import Flask
 from dotenv import load_dotenv
-from database import db
-from flask_migrate import Migrate
 from .extensions import db
+from flask_migrate import Migrate
+from .models import User, Categoria, Lancamento, Historico
 
 load_dotenv()
 

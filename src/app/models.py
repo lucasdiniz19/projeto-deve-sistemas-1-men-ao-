@@ -1,4 +1,4 @@
-from database import db
+from .extensions import db
 from datetime import datetime
 
 class User(db.Model):
@@ -12,7 +12,7 @@ class User(db.Model):
 class Categoria(db.Model):
     __tablename__ = 'categorias'
     id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(50), nullable=False) [cite: 42]
+    nome = db.Column(db.String(50), nullable=False)
     tipo_sugerido = db.Column(db.String(20))
     lancamentos = db.relationship('Lancamento', backref='categoria', lazy=True)
 
@@ -23,8 +23,6 @@ class Lancamento(db.Model):
     descricao = db.Column(db.String(100))
     tipo = db.Column(db.String(10), nullable=False)
     data = db.Column(db.DateTime, default=datetime.utcnow)
-    
-    # Chaves Estrangeiras [cite: 41]
     usuario_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     categoria_id = db.Column(db.Integer, db.ForeignKey('categorias.id'), nullable=False)
 
