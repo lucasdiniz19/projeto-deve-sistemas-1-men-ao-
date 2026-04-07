@@ -2,7 +2,7 @@ from flask import request, jsonify
 from app import app, db
 from app.models import User, Categoria, Lancamento, Historico
 
-# --- CREATE (Inserção com Regras de Negócio) --- [cite: 50]
+
 @app.route('/lancamentos', methods=['POST'])
 def criar_lancamento():
     dados = request.json
@@ -11,7 +11,6 @@ def criar_lancamento():
     cat_id = dados.get('categoria_id')
     user_id = dados.get('usuario_id')
 
-    # Validação das Regras de Negócio 
     if not valor or valor <= 0:
         return jsonify({"erro": "O lançamento deve possuir valor positivo!"}), 400
     
@@ -29,7 +28,6 @@ def criar_lancamento():
         descricao=dados.get('descricao')
     )
     
-    # Registro automático no Histórico (Uso da 4ª tabela) [cite: 47]
     log = Historico(acao=f"Criou {tipo} de R$ {valor}", usuario_id=user_id)
     
     db.session.add(novo)
@@ -38,7 +36,6 @@ def criar_lancamento():
     
     return jsonify({"msg": "Lançamento registrado com sucesso!"}), 201
 
-# --- READ (Consulta) --- [cite: 51]
 @app.route('/lancamentos', methods=['GET'])
 def listar_lancamentos():
     lista = Lancamento.query.all()
@@ -53,7 +50,6 @@ def listar_lancamentos():
         })
     return jsonify(output), 200
 
-# --- UPDATE (Atualização) --- [cite: 52]
 @app.route('/lancamentos/<int:id>', methods=['PUT'])
 def atualizar_lancamento(id):
     lancamento = Lancamento.query.get_or_404(id)
@@ -67,7 +63,6 @@ def atualizar_lancamento(id):
     db.session.commit()
     return jsonify({"msg": "Lançamento atualizado!"}), 200
 
-# --- DELETE (Remoção) --- [cite: 53]
 @app.route('/lancamentos/<int:id>', methods=['DELETE'])
 def deletar_lancamento(id):
     lancamento = Lancamento.query.get_or_404(id)
