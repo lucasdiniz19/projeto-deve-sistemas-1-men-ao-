@@ -1,10 +1,13 @@
-from flask import request, jsonify
-from app import app, db
-from app.models import User, Categoria, Lancamento, Historico
+from flask import Blueprint, request, jsonify
+from .extensions import db
+from .models import User, Categoria, Lancamento, Historico
 
 
-@app.route('/lancamentos', methods=['POST'])
+bp = Blueprint('main', __name__)
+
+@bp.route('/lancamentos', methods=['POST'])
 def criar_lancamento():
+
     dados = request.json
     valor = dados.get('valor')
     tipo = dados.get('tipo')
@@ -36,7 +39,7 @@ def criar_lancamento():
     
     return jsonify({"msg": "Lançamento registrado com sucesso!"}), 201
 
-@app.route('/lancamentos', methods=['GET'])
+@bp.route('/lancamentos', methods=['GET'])
 def listar_lancamentos():
     lista = Lancamento.query.all()
     output = []
