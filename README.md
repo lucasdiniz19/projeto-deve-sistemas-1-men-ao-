@@ -1,14 +1,14 @@
-# Sistema de Controle Financeiro Pessoal 💰
+# Sistema de Controle Financeiro Pessoal 
 
 Este projeto é uma API Backend desenvolvida para a 1ª Menção da disciplina de Desenvolvimento de Sistemas. O objetivo é permitir que usuários gerenciem suas finanças através do controle de receitas, despesas e categorias.
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 - **Linguagem:** Python 3.10
 - **Framework:** Flask
 - **Banco de Dados:** SQLite (Relacional)
 - **ORM/Migrations:** Flask-SQLAlchemy e Flask-Migrate
 
-## 📊 Estrutura do Banco de Dados
+##  Estrutura do Banco de Dados
 O banco de dados é composto por 4 tabelas principais:
 1. **User:** Armazena dados dos usuários (ID, Nome, Email).
 2. **Category:** Categorias para classificação (Ex: Moradia, Lazer).
@@ -22,7 +22,7 @@ Conforme os requisitos do projeto:
 - **Classificação Semântica:** Cada lançamento é categorizado estritamente como "Entrada" ou "Saída".
 - **Integridade:** Operações de deleção e atualização são registradas para fins de auditoria.
 
-## 🛣️ Rotas da API
+##  Rotas da API
 | Método | Rota | Descrição |
 | :--- | :--- | :--- |
 | **GET** | `/users` | Lista todos os usuários |
@@ -32,7 +32,7 @@ Conforme os requisitos do projeto:
 | **PUT** | `/transactions/<id>` | Atualiza um lançamento existente |
 | **DELETE** | `/transactions/<id>` | Remove um lançamento do sistema |
 
-## ⚙️ Como Executar o Projeto
+## Como Executar o Projeto
 ---------------------------------------------------------------------------------------------------------------------------
 1. **Clonar o repositório:**
 
