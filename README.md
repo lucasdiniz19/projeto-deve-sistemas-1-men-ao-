@@ -15,7 +15,7 @@ O banco de dados é composto por 4 tabelas principais:
 3. **Transaction:** Registros financeiros vinculados a um usuário e uma categoria.
 4. **AuditLog:** Tabela de histórico que registra ações relevantes no sistema.
 
-## 🛠️ Regras de Negócio Implementadas
+##  Regras de Negócio Implementadas
 Conforme os requisitos do projeto:
 - **Consistência de Valor:** Todo lançamento financeiro deve possuir obrigatoriamente um valor positivo.
 - **Vínculo Obrigatório:** Nenhuma transação pode existir sem estar associada a uma categoria válida.
