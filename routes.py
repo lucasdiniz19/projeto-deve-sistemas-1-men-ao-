@@ -16,8 +16,8 @@ def create_transaction():
     if data.get('value', 0) <= 0:
         return jsonify({"error": "O valor deve ser positivo"}), 400
     
-    if data.get('type') not in ['entrada', 'saída']:
-        return jsonify({"error": "Tipo deve ser 'entrada' ou 'saída'"}), 400
+    if data.get('type') not in ['entrada', 'saida']:
+        return jsonify({"error": "Tipo deve ser 'entrada' ou 'saida'"}), 400
 
     new_transaction = Transaction(
         description=data['description'],
